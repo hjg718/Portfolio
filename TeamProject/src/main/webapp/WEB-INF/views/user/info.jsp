@@ -259,7 +259,7 @@ text-overflow: ellipsis;
 </tr>
 <c:forEach items="${info.rvoList }" var="ren" >
 <tr id="ren${ren.num}">
-<td><a href="<c:url value="/book/read?bnum=${ren.booknum}"/>">${ren.bookname}</a></td>
+<td><a href="<c:url value="/book/read?bnum=${ren.booknum}"/>" title="${ren.bookname}">${ren.bookname}</a></td>
 <td>${ren.rendate }</td>
 <td>${ren.returndate }</td>
 <td>${ren.day }</td>
@@ -287,7 +287,7 @@ text-overflow: ellipsis;
 </tr>
 <c:forEach items="${info.bvoList }" var="boo" >
 <tr id="boo${boo.num}">
-<td><a href="<c:url value="/book/read?bnum=${boo.booknum }"/>">${boo.bookname}</a></td>
+<td><a href="<c:url value="/book/read?bnum=${boo.booknum }"/>" title="${boo.bookname}">${boo.bookname}</a></td>
 <c:choose>
 <c:when test="${!boo.ok }">
 <td>${boo.rendate }</td>
@@ -321,7 +321,7 @@ text-overflow: ellipsis;
 </tr>
 <c:forEach items="${info.rvoList }" var="ren" >
 <tr id="ren${ren.num}">
-<td><a href="<c:url value="/book/read?bnum=${ren.booknum}"/>">${ren.bookname}</a></td>
+<td><a href="<c:url value="/book/read?bnum=${ren.booknum}"/>" title="${ren.bookname}">${ren.bookname}</a></td>
 <td>${ren.rentalUser}</td>
 <td><a href="javascript:returnConfirm(${ren.num },'${ren.rentalUser}');">반납 승인</a></td>
 </tr>
