@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="team.book.model.BookDao">
+
+	<select id="search" resultMap="book">
+		SELECT * FROM
+		(
+			SELECT bnum,bname,bindex,author,publisher,bcontents,pdate,covername,
+			CEIL(rn/5) page, CEIL((count(*)OVER())/5) tpg FROM
+			(
+				SELECT bnum,bname,bindex,author,publisher,bcontents,pdate,covername,ROWNUM rn 
+				FROM Book WHERE	${category} LIKE '%'||#{keyword}||'%' ORDER BY bnum
+			)
+		)
+		WHERE page=#{page}
+	</select>
+	
+	<resultMap type="team.book.model.Book" id="book">
+		<result property="page" column="page"/>
+		<result property="tpg" column="tpg"/>
+		
+		<collection property="list" column="bnum" javaType="ArrayList" 
+		ofType="team.book.model.BookVo">
+			<id property="bnum" column="bnum" />
+			<result property="bname" column="bname" />
+			<result property="bcontents" column="bcontents" />
+			<result property="bindex" column="bindex" />
+			<result property="author" column="author" />
+			<result property="publisher" column="publisher" />
+			<result property="pdate" column="pdate" />
+			<result property="coverName" column="covername" />
+		</collection>
+	</resultMap>
+	
+	<insert id="add" parameterType="team.book.model.BookVo">
+		INSERT INTO book
+		values(SEQ_BOOK.NEXTVAL,#{bname},#{bindex},#{author},#{publisher},#{bcontents},#{pdate},SEQ_BOOK.CURRVAL||'.'||#{coverName})
+		<selectKey order="AFTER" resultType="int" keyProperty="bnum">
+			SELECT SEQ_BOOK.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
+	<insert id="addcate">
+		INSERT INTO category values(#{num},#{cate})
+	</insert>
+	
+	<insert id="rental">
+		INSERT INTO rental VALUES(SEQ_RENTAL.NEXTVAL,#{booknum},#{userid},sysdate,'1')
+	</insert>
+	
+	<update id="addCurrbook">
+		UPDATE puser SET currbook = (currbook+1) WHERE userid = #{userid}
+	</update>
+	
+	<update id="returnBook">
+		UPDATE rental SET return = 0 WHERE num = #{num}
+	</update>
+	
+	<update id="decCurrbook">
+		UPDATE puser SET currbook = (currbook-1) WHERE userid = #{userid}
+	</update>
+	
+	<insert id="booking">
+		INSERT INTO booking VALUES (SEQ_BOOKING.NEXTVAL, #{booknum},#{userid})
+	</insert>
+	
+	<select id="check" resultType="int">
+		SELECT maxbook - currbook FROM puser WHERE userid = #{userid}
+	</select>
+	
+	<select id="readRental" resultType="team.book.model.Book" >
+		SELECT rentaluser, rentaldate FROM rental WHERE booknum = #{bnum} AND return =1
+	</select>
+	
+	<select id="checkBook" resultType="int">
+		SELECT COUNT(*) FROM booking WHERE booknum=#{booknum}
+	</select>
+	
+	<select id="subscriber" resultType="String">
+		SELECT bookinguser FROM booking WHERE booknum=#{booknum}
+	</select>
+
+	<select id="read" resultMap="bookread">
+		SELECT b.*,cate FROM BOOK b 
+		INNER JOIN category c ON b.bnum = c.bnum
+		WHERE b.bnum=#{num} 
+	</select>
+	
+	<resultMap type="team.book.model.BookVo" id="bookread">
+		<result property="bnum" column="bnum" />
+		<result property="bname" column="bname" />
+		<result property="bcontents" column="bcontents" />
+		<result property="bindex" column="bindex" />
+		<result property="author" column="author" />
+		<result property="publisher" column="publisher" />
+		<result property="pdate" column="pdate" />
+		<result property="coverName" column="covername" />
+		
+		<collection property="cate" column="cate" javaType="ArrayList" 
+		ofType="String">
+		<id column="cate"/>
+		</collection>
+	</resultMap>
+	
+	<delete id="cancel">
+		DELETE FROM booking WHERE num=#{num}
+	</delete>
+	
+	<update id="edit" parameterType="team.book.model.BookVo">
+		UPDATE book
+		<set>
+			<if test="coverName!=null">covername = #{coverName},</if>
+			bname = #{bname}, bindex = #{bindex}, author = #{author}, 
+			publisher = #{publisher}, pdate =#{pdate},bcontents = #{bcontents}
+		</set>
+		WHERE bnum = #{bnum}
+	</update>
+	
+	<select id="getcate" resultType="String">
+		SELECT cate FROM category WHERE bnum = #{bnum}
+	</select>
+	
+	<delete id="removeCate">
+		DELETE FROM category WHERE bnum = #{bnum} AND cate = #{cate}
+	</delete>
+	
+	<delete id="delete">
+		DELETE FROM book WHERE bnum = #{bnum}
+	</delete>
+	
+</mapper>

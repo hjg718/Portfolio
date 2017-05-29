@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="team.QnA.model.QnaDao"> <!--이 sql 문장과 매핑될 인터페이스의 완전한 경로-->
+
+	<insert id="save" parameterType="team.QnA.model.QnaVo">
+		insert into qna
+		values ( board_seq.nextval, #{title}, #{author}, #{qcontents}, sysdate ,
+		#{ref},#{pwd})
+		<selectKey order="AFTER" keyProperty="num" resultType="int">
+			SELECT board_seq.currval FROM dual
+		</selectKey>
+	</insert>
+
+	<select id="recent" resultType="team.QnA.model.QnaVo">
+		select * from qna where num=(select max(num) from
+		(select * from qna where author=#{author}))
+	</select>
+
+	<select id="list" resultType="team.QnA.model.QnaVo">
+		select
+		"NUM","TITLE","AUTHOR","QCONTENTS","BDATE","PAGE","ROWNUM","QREF","TOTALPAGES"
+		from(
+		select num, title,author,qcontents,bdate,FLOOR((rownum-1)/10+1)
+		page,rownum,qref,ceil(count(*) over()/10) totalpages from
+		(
+		select num,lpad('└',(level-1)*3,' ')||title
+		title,author,qcontents,bdate,qref,rownum from
+		(select num, title,author,qcontents,bdate,rownum,qref from qna)
+		start with qref=0 connect by prior num=qref
+		order SIBLINGS by num desc
+		)
+		)where page=1
+	</select>
+
+	<select id="getPage" parameterType="int" resultMap="qnaMap">
+		select
+		"NUM","TITLE","AUTHOR","QCONTENTS","BDATE","PAGE","ROWNUM","QREF","TOTALPAGES"
+		from(
+		select num, title,author,qcontents,bdate,FLOOR((rownum-1)/10+1)
+		page,rownum,qref,ceil(count(*) over()/10) totalpages from
+		(
+		select num,lpad('└',(level-1)*3,' ')||title
+		title,author,qcontents,bdate,qref,rownum from
+		(select num, title,author,qcontents,bdate,rownum,qref from qna)
+		start with qref=0 connect by prior num=qref
+		order SIBLINGS by num desc
+		)
+		)where page=#{ pgnum }
+	</select>
+	
+	   <select id="find" resultType="team.QnA.model.QnaVo">
+		select NUM,TITLE,AUTHOR,QCONTENTS,BDATE,PAGE,ROWNUM,QREF,TOTALPAGES from(
+		select num, title,author,qcontents,bdate,FLOOR((rownum-1)/10+1)
+		page,rownum,qref,ceil(count(*) over()/10) totalpages from
+		(
+		select num,lpad('└',(level-1)*3,' ')||title
+		title,author,qcontents,bdate,qref,rownum from
+		(select num, title,author,qcontents,bdate,rownum,qref from qna)
+		where ${category} like '%'||#{keyword}||'%'
+		start with qref=0 connect by prior num=qref
+		order SIBLINGS by num desc
+		)
+		)where page=#{pgnum}
+	</select>
+	
+	
+
+	<resultMap id="qnaMap" type="team.QnA.model.Qna">
+		<result property="page" column="page" />
+		<result property="totalpages" column="totalpages" />
+
+		<collection property="list" column="num" javaType="ArrayList"
+			ofType="team.QnA.model.QnaVo">
+			<id property="num" column="num" />
+			<result property="title" column="title" />
+			<result property="qcontents" column="qcontents" />
+			<result property="author" column="author" />
+			<result property="ref" column="ref" />
+		</collection>
+	</resultMap>
+
+ 	<select id="read" resultType="team.QnA.model.QnaVo">
+		select * from qna where num=#{num}
+	</select>
+	
+	<update id="modify" parameterType="team.QnA.model.QnaVo">
+		update qna set title=#{title}, qcontents = #{qcontents},pwd = #{pwd}
+		where num=#{num}
+	</update>
+
+	<update id="delete">
+		update qna set title='삭제된 글입니다.',author='삭제', qcontents = '삭제된 글입니다.',pwd = 0000
+		where num=#{num}
+	</update>
+    
+</mapper>
+    
+
+
+
+

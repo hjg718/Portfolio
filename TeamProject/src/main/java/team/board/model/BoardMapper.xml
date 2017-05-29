@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--이 sql 문장과 매핑될 인터페이스의 완전한 경로 -->
+<mapper namespace="team.board.model.BoardDAO">
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<resultMap id="empMap" type="team.board.model.Board">
+		<result property="currpage" column="currpage" />
+		<result property="totalpage" column="totalpage"/>
+		<collection property="list" column="num" javaType="ArrayList" 
+								ofType="team.board.model.BoardVO">
+			<id property="num" column="num" />
+			<result property="title" column="title" />
+			<result property="contents" column="contents" />
+			<result property="author" column="author" />
+			<result property="regdate" column="regdate" />
+			<result property="ref" column="ref" />
+			<result property="readCnt" column="readcnt"/>
+			<result property="goodcnt" column="goodcnt"/>
+		</collection>
+		</resultMap>
+		
+<!-- 	</resultMap> -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<select id="boardPage" parameterType="int" resultMap="empMap">
+    	    SELECT num,title,contents,author,currpage,totalpage,readcnt,goodcnt FROM 
+       (
+          SELECT T1.*, FLOOR((ROWNUM-1)/10+1) currpage, CEIL(COUNT(*) OVER()/10) totalpage
+		  FROM 
+          	(
+            	SELECT num,LPAD('└',(LEVEL-1)*2,'　')||title title, 
+            	author, contents,readcnt,goodcnt
+    	       	
+    	       	FROM fboard
+             	START WITH ref=0  
+             	CONNECT BY PRIOR num=ref
+             	order SIBLINGS by num desc
+             	             	 
+          	) T1 
+       ) where currpage = #{pageNum}
+       
+    </select>
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+<!-- 추천수 많은 리스트 -->
+	<select id="goodList" resultType="team.board.model.BoardVO">
+		select num,title,author,readcnt,goodcnt,rownum from 
+		(select * from fboard order by goodcnt desc) where rownum between 1 and 6
+	</select>
+<!-- 제목 클릭시 내용 보여주기 -->
+	<select id="info" resultType="team.board.model.BoardVO">
+		select num,title,contents,author,readcnt,regdate,goodcnt from fboard where num=#{num}
+	</select>
+	<!-- 수정 -->
+	<update id="update" parameterType="team.board.model.BoardVO">
+		update fboard set title=#{title},contents=#{contents} where num=#{num}
+	</update>
+	
+	<!-- 조회수 -->
+	<update id="readCnt" parameterType="team.board.model.BoardVO">
+		update fboard set readcnt = #{readCnt}+1 where num=#{num}
+	</update>
+	
+	<!-- 삭제 _댓글이 달린글은 삭제가 불가능 하게 되어있다.-->
+	<delete id="delete">
+		delete from fboard where num=#{num} and not exists
+			(
+				select * from fboard where ref=#{num}
+			)
+	</delete>
+	<!-- 추천1 -->
+	<update id="goodCnt" parameterType="team.board.model.BoardVO">
+		update fboard set goodcnt = #{goodcnt}+1 where num=#{num}
+	</update>
+	
+	<!-- 추천한 사람의 아이디와 추천한 글 번호 -->
+	<insert id="goodCntUser" parameterType="team.board.model.BoardVO">
+		insert into goodcntuser (goodname,goodnum)values( #{goodname} , #{goodnum})
+	</insert>
+	
+	<!-- 추천한 아이디,추천한 글 번호 목록  -->
+	<select id="goodUserList" resultType="team.board.model.BoardVO" parameterType="team.board.model.BoardVO">
+		select goodname,goodnum from goodcntuser where goodname= #{goodname}
+	</select>
+	
+	<!-- 글쓰기 -->
+	<insert id="input" parameterType="team.board.model.BoardVO">
+		insert into fboard (num, title, contents,author,regdate,ref) 
+		values (BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{author} ,sysdate,#{ref} )
+		<selectKey order="AFTER" resultType="int" keyProperty="num">
+			SELECT BOARD_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+	</insert> 
+	<!-- 검색 -->
+	<select id="search" resultType="team.board.model.BoardVO">
+		 select * from (
+        	SELECT T1.*, FLOOR((ROWNUM-1)/7+1) currpage, CEIL(COUNT(*) OVER()/7) totalpage
+		  	FROM 
+          	(
+            	SELECT num,LPAD('└',(LEVEL-1)*2,'　')||title title, 
+            	author, contents,readcnt,goodcnt 
+            	FROM fboard 
+            	where ${category} like '%'||#{keyword}||'%'
+             	START WITH ref=0  
+             	CONNECT BY PRIOR num=ref
+             	order SIBLINGS by num desc
+             	             	 
+          	) T1 
+       ) where currpage = #{page}
+	</select>
+
+	<select id="recent" resultType="team.board.model.BoardVO">
+		select num,title,contents,author,readcnt,regdate,goodcnt 
+		from fboard where num=
+		(SELECT MAX(num) FROM fboard WHERE author = #{id})
+	</select>
+	
+	
+</mapper>
