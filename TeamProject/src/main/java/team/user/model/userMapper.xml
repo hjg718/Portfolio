@@ -32,9 +32,9 @@
 	</select>
 
 	<select id="rental" resultMap="rental">
-		SELECT r.num, r.booknum,r.rentaldate,b.bname FROM rental r
+		SELECT r.num, r.booknum,r.rentaldate,b.bname, r.return FROM rental r
 		INNER JOIN book b ON r.booknum = b.bnum
-		WHERE r.rentaluser = #{userid} AND r.return = 1
+		WHERE r.rentaluser = #{userid} AND (r.return = 1 OR r.return = 2)
 	</select>
 	
 	<resultMap type="team.user.model.RentalVo" id="rental">
@@ -42,7 +42,7 @@
 		<result property="booknum" column="booknum" />
 		<result property="bookname" column="bname" />
 		<result property="rentaldate" column="rentaldate" />
-		
+		<result property="status" column="return" />
 	</resultMap>
 	
 	<select id="booking" resultMap="booking">
@@ -59,11 +59,24 @@
 	</resultMap>
 	
 	<select id="rentalCheck" resultType="java.util.Date">
-		SELECT rentaldate FROM rental WHERE booknum = #{booknum} AND return = 1
+		SELECT rentaldate FROM rental WHERE booknum = #{booknum} AND (return = 1 OR return = 2)
 	</select>
 
 	<delete id="removeBooking">
 		DELETE FROM booking WHERE bookinguser = #{userid}
 	</delete>
+	
+	<select id="returnRequest" resultMap="returnRequest">
+		SELECT b.bname, r.booknum, r.rentaluser,r.num FROM rental r
+		INNER JOIN book b ON r.booknum = b.bnum
+		WHERE return = 2
+	</select>
+	
+	<resultMap type="team.user.model.RentalVo" id="returnRequest">
+		<result property="num" column="num" />
+		<result property="booknum" column="booknum" />
+		<result property="bookname" column="bname" />
+		<result property="rentalUser" column="rentaluser" />
+	</resultMap>
 	
 </mapper>

@@ -11,6 +11,8 @@ public class RentalVo {
 	private int booknum;
 	private String day;
 	private String bookname;
+	private String rentalUser;
+	private int status;
 	
 	public int getNum() {
 		return num;
@@ -53,6 +55,18 @@ public class RentalVo {
 	}
 	public void setBookname(String bookname) {
 		this.bookname = bookname;
+	}
+	public String getRentalUser() {
+		return rentalUser;
+	}
+	public void setRentalUser(String rentalUser) {
+		this.rentalUser = rentalUser;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

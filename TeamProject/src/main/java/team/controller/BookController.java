@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,8 +87,8 @@ public class BookController {
 	
 	@RequestMapping("returnBook")
 	@ResponseBody
-	public String returnBook(@RequestParam("num")int num,@RequestParam("userid") String userid){
-		String pass= svc.returnBook(num,userid);
+	public String returnBook(@RequestParam("num")int num){
+		String pass= svc.returnBook(num);
 		return pass;
 	}
 	
@@ -137,6 +138,13 @@ public class BookController {
 	@ResponseBody
 	public String delete(@RequestParam("booknum") int booknum){
 		String pass= svc.delete(booknum);
+		return pass;
+	}
+	
+	@RequestMapping("returnConfirm")
+	@ResponseBody
+	public String returnConfirm(@RequestParam("num")int num,@RequestParam("userid") String userid){
+		String pass= svc.returnConfirm(num,userid);
 		return pass;
 	}
 }

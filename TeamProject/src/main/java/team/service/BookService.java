@@ -133,12 +133,11 @@ public class BookService {
 		return jobj.toJSONString();
 	}
 
-	public String returnBook(int num,String userid) {
+	public String returnBook(int num) {
 		BookDao dao = sqlST.getMapper(BookDao.class);
 		JSONObject jobj = new JSONObject();
 		int row = dao.returnBook(num);
 		if(row>0){
-			dao.decCurrbook(userid);
 			jobj.put("pass", true);
 		}
 		return jobj.toJSONString();
@@ -270,6 +269,17 @@ public class BookService {
 			jobj.put("pass", true);
 		}
 		else jobj.put("pass", false); 
+		return jobj.toJSONString();
+	}
+
+	public String returnConfirm(int num, String userid) {
+		BookDao dao = sqlST.getMapper(BookDao.class);
+		JSONObject jobj = new JSONObject();
+		int row = dao.returnConfirm(num);
+		if(row>0){
+			dao.decCurrbook(userid);
+			jobj.put("pass", true);
+		}
 		return jobj.toJSONString();
 	}
 }

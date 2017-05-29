@@ -21,5 +21,6 @@ public interface UserDao {
 	public List<RentalVo> rental(String userid);
 	public Date rentalCheck(int booknum);
 	public int removeBooking(String userid);
+	public List<RentalVo> returnRequest();
 
 }

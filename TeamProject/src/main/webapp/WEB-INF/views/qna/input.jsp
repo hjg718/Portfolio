@@ -61,6 +61,7 @@ function check() {
 }
 </script>
 <body>
+<sec:authentication var="id" property="name" />
 <header>
 <div id="navigation"class="navbar navbar-inverse navbar-fixed-top default"role="navigation">
 <div class="container">
@@ -86,17 +87,13 @@ id="bs-example-navbar-collapse-1">
 </sec:authorize>
 </ul>
 <ul class="nav navbar-nav navbar-right" id="mynav">
-<sec:authentication var="id" property="name" />
-<c:url var="user" value="/user/info">
-<c:param name="id" value="${id }" />
-</c:url>
 <sec:authorize access="!isAuthenticated()">
 <li><a href="#myModal" data-toggle="modal">로그인</a></li>
 <li><a href="<c:url value="/user/join"/>">회원가입</a></li>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
 <li><a href="javascript:logout();">로그아웃</a></li>
-<li><a href="${user}">내 서재 가기</a></li>
+<li><a href="<c:url value="/user/info"/>">내 서재 가기</a></li>
 </sec:authorize>
 <li><a href="<c:url value="/qna/list"/>">Q&amp;A게시판</a></li>
 <li><a href="<c:url value="/board/list"/>">자유게시판</a></li>

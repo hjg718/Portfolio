@@ -44,5 +44,7 @@ public interface BookDao {
 	public void removeCate(@Param("bnum")int bnum, @Param("cate")String cate);
 
 	public int delete(int booknum);
+
+	public int returnConfirm(int num);
 	
 }

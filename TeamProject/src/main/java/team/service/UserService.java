@@ -152,4 +152,14 @@ public class UserService {
 		user.setBvoList(booking);
 		return user;
 	}
+
+	public User getManagerInfo(String id) {
+		UserDao dao = sqlST.getMapper(UserDao.class);
+		User user = new User();
+		List<RentalVo> returnRequest = dao.returnRequest();
+		UserVo vo = getvo(id);
+		user.setVo(vo);
+		user.setRvoList(returnRequest);
+		return user;
+	}
 }

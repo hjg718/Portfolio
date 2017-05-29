@@ -92,12 +92,9 @@ margin-top: 23%;
 </ul>
 <ul class="nav navbar-nav navbar-right" id="mynav">
 <sec:authentication var="id" property="name" />
-<c:url var="user" value="/user/info">
-<c:param name="id" value="${id }" />
-</c:url>
 <sec:authorize access="isAuthenticated()">
 <li><a href="javascript:logout();">로그아웃</a></li>
-<li><a href="${user}">내 서재 가기</a></li>
+<li><a href="<c:url value="/user/info"/>">내 서재 가기</a></li>
 </sec:authorize>
 <sec:authorize access="!isAuthenticated()">
 <li><a href="#myModal" data-toggle="modal">로그인</a></li>

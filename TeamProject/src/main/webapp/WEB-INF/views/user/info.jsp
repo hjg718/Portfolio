@@ -52,7 +52,7 @@ function returnBook(num) {
 		dataType : "json",
 		success : function(res){
 			if(res.pass){
-				$("#resultModalBody").text("반납완료!");
+				$("#resultModalBody").text("반납신청 완료!");
 				$('#resultModal').modal('show');
 				$('#resultModal').on('hidden.bs.modal', function (e) {
 					location.reload();
@@ -64,6 +64,30 @@ function returnBook(num) {
 		}
 	});
 }
+function returnConfirm(num,userid) {
+	$("#returnConfirmForm input[name=num]").val(num);
+	$("#returnConfirmForm input[name=userid]").val(userid);
+	var param = $("#returnConfirmForm").serialize();
+	$.ajax({
+		url : "<c:url value='/book/returnConfirm'/>",
+		method : "post",
+		data : param,
+		dataType : "json",
+		success : function(res){
+			if(res.pass){
+				$("#resultModalBody").text("반납 처리 완료!");
+				$('#resultModal').modal('show');
+				$('#resultModal').on('hidden.bs.modal', function (e) {
+					location.reload();
+				});
+			}
+		},
+		error : function(x,s,e){
+			alert("오류!");
+		}
+	});
+}
+
 function cancel(num) {
 	$("#cancelForm input[name=num]").val(num);
 	var param = $("#cancelForm").serialize();
@@ -220,6 +244,7 @@ text-overflow: ellipsis;
 </dl>
 </div>
 </div>
+<sec:authorize access="hasAuthority('USER')">
 <div class="panel panel-success">
 <div class="panel-heading">
 <h4 class="panel-title">대여 정보</h4>
@@ -238,7 +263,12 @@ text-overflow: ellipsis;
 <td>${ren.rendate }</td>
 <td>${ren.returndate }</td>
 <td>${ren.day }</td>
+<c:if test="${ren.status==1 }">
 <td><a href="javascript:returnBook(${ren.num });">반납하기</a></td>
+</c:if>
+<c:if test="${ren.status==2 }">
+<td>반납 처리중</td>
+</c:if>
 </tr>
 </c:forEach>
 </table>
@@ -277,6 +307,28 @@ text-overflow: ellipsis;
 </c:forEach>
 </table>
 </div>
+</sec:authorize>
+<sec:authorize access="hasAnyAuthority('MANAGER','ADMIN')">
+<div class="panel panel-success">
+<div class="panel-heading">
+<h4 class="panel-title">반납 요청</h4>
+</div>
+<table class="table table-hover">
+<tr>
+<th>도서 제목</th>
+<th>반납 회원</th>
+<th>확인</th>
+</tr>
+<c:forEach items="${info.rvoList }" var="ren" >
+<tr id="ren${ren.num}">
+<td><a href="<c:url value="/book/read?bnum=${ren.booknum}"/>">${ren.bookname}</a></td>
+<td>${ren.rentalUser}</td>
+<td><a href="javascript:returnConfirm(${ren.num },'${ren.rentalUser}');">반납 승인</a></td>
+</tr>
+</c:forEach>
+</table>
+</div>
+</sec:authorize>
 <div class="panel panel-default">
 <div class="panel-body">
 <ul class="list-inline" style="text-align: center;">
@@ -343,11 +395,16 @@ text-overflow: ellipsis;
 <input type="hidden" name="userid" value="${info.vo.userid }">
 <input type="hidden" name="upwd">
 </form>
-<!--반납  -->
+<!--반납  요청 -->
 <form  id="returnForm">
 <input type="hidden" name="${_csrf.parameterName }"	value="${_csrf.token }">
 <input type="hidden" name="num">
-<input type="hidden" name="userid" value="${id }">
+</form>
+<!--반납  처리 -->
+<form  id="returnConfirmForm">
+<input type="hidden" name="${_csrf.parameterName }"	value="${_csrf.token }">
+<input type="hidden" name="num">
+<input type="hidden" name="userid">
 </form>
 <!--예약도서 렌탈  -->
 <form  id="rentalForm">

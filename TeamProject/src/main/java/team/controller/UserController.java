@@ -1,8 +1,11 @@
 package team.controller;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,9 +59,15 @@ public class UserController {
 	}
 	
 	@RequestMapping("info")
-	public String info(@RequestParam("id") String id,Model model){
-		User info = svc.getinfo(id);
-		model.addAttribute("info", info);
+	public String info(Model model,Authentication auth){
+		if(auth.getAuthorities().toString().equals("[USER]")){
+			User info = svc.getinfo(auth.getName());
+			model.addAttribute("info", info);
+		}
+		else if(auth.getAuthorities().toString().equals("[ADMIN]")||auth.getAuthorities().toString().equals("[MANAGER]")){
+			User info = svc.getManagerInfo(auth.getName());
+			model.addAttribute("info", info);
+		}
 		return "user/info";
 	}
 	
