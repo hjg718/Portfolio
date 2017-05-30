@@ -1,17 +1,4 @@
-<div style="font-family: 'Lucida Grande', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Lucida Sans Unicode', Helvetica, Arial, sans-serif; font-size: 0.9em; overflow-x: hidden; overflow-y: auto; margin: 0px !important; padding: 5px 20px 26px !important; background-color: rgb(255, 255, 255);font-family: 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Verdana, Tahoma, sans-serif; padding: 20px;padding: 20px; color: rgb(34, 34, 34); font-size: 15px; font-family: 'Roboto Condensed', Tauri, 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Verdana, Tahoma, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: rgb(255, 255, 255);"><h1 id="rd-library" style="clear: both;font-size: 2.2em; font-weight: bold; margin: 1.5em 0px 1em;margin-top: 0px;"><a name="rd-library" href="#rd-library" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>RD Library</h1><p style="undefined; margin: 0px !important;margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"></p><ul>
-<li style="display: list-item; line-height: 1.4em;"><ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#프로젝트-개요" title="프로젝트 개요" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">프로젝트 개요</a>
-</span>
-<!--span class="number">
-0
-</span-->
-</li>
-</ul>
-</li>
-
-</ul>
-<p style="margin: 1em 0px; word-wrap: break-word;"></p><p style="margin: 1em 0px; word-wrap: break-word;">프로젝트 개요</p><ul>
+<div style="font-family: 'Lucida Grande', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Lucida Sans Unicode', Helvetica, Arial, sans-serif; font-size: 0.9em; overflow-x: hidden; overflow-y: auto; margin: 0px !important; padding: 5px 20px 26px !important; background-color: rgb(255, 255, 255);font-family: 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Verdana, Tahoma, sans-serif; padding: 20px;padding: 20px; color: rgb(34, 34, 34); font-size: 15px; font-family: 'Roboto Condensed', Tauri, 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Verdana, Tahoma, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: rgb(255, 255, 255);"><h1 id="rd-library" style="clear: both;font-size: 2.2em; font-weight: bold; margin: 1.5em 0px 1em;margin-top: 0px;"><a name="rd-library" href="#rd-library" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>RD Library</h1><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">프로젝트 개요</p><ul>
 <li style="display: list-item; line-height: 1.4em;">목표 : 도서 대여, 예약 및 관리 가능한 웹 도서관 관리 프로그램 구축<ul>
 <li style="display: list-item; line-height: 1.4em;">도서 검색, 대여, 예약 기능 구현</li><li style="display: list-item; line-height: 1.4em;">도서 등록, 관리 기능 구현</li></ul>
 </li></ul><ul>
