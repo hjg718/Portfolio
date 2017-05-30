@@ -11,7 +11,7 @@
 </li>
 
 </ul>
-<p style="margin: 1em 0px; word-wrap: break-word;"></p><h1 id="프로젝트-개요" style="clear: both;font-size: 2.2em; font-weight: bold; margin: 1.5em 0px 1em;"><a name="프로젝트-개요" href="#프로젝트-개요" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>프로젝트 개요</h1><ul>
+<p style="margin: 1em 0px; word-wrap: break-word;"></p><p style="margin: 1em 0px; word-wrap: break-word;">프로젝트 개요</p><ul>
 <li style="display: list-item; line-height: 1.4em;">목표 : 도서 대여, 예약 및 관리 가능한 웹 도서관 관리 프로그램 구축<ul>
 <li style="display: list-item; line-height: 1.4em;">도서 검색, 대여, 예약 기능 구현</li><li style="display: list-item; line-height: 1.4em;">도서 등록, 관리 기능 구현</li></ul>
 </li></ul><ul>
