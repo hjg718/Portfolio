@@ -77,7 +77,7 @@
 <li style="display: list-item; line-height: 1.4em;"><h2 id="구축환경" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;margin-top: 0px;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230);"><a name="구축환경" href="#구축환경" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>구축환경</h2>
 <img src="/imgs/이클립스.png" alt="이클립스" style="max-width: 100%;"> <img src="/imgs/자바.jpg" alt="자바" style="max-width: 100%;">  <img src="/imgs/윈도우.png" alt="윈도우" style="max-width: 100%;"><br style="clear: both;"><img src="/imgs/오라클.png" alt="오라클" style="max-width: 100%;"> <img src="/imgs/캣.png" alt="캣" style="max-width: 100%;"> <img src="/imgs/html.png" alt="html" style="max-width: 100%;"><br style="clear: both;"><img src="null" alt="제이쿼리" style="max-width: 100%;"> <img src="null" alt="부트" style="max-width: 100%;"> <img src="null" alt="프링이" style="max-width: 100%;"><br style="clear: both;"><img src="null" alt="깃" style="max-width: 100%;"></li></ul><ul>
 <li style="display: list-item; line-height: 1.4em;"><h2 id="use-case-diagram-&amp;-erd" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;margin-top: 0px;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230);"><a name="use-case-diagram-&amp;-erd" href="#use-case-diagram-&amp;-erd" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Use Case Diagram &amp; ERD</h2>
-<img src="/imgs/UCD.jpg" alt="UCD" style="max-width: 100%;"> <img src="/imgs/ERD.png" alt="ERD" style="max-width: 100%;"><br style="clear: both;"><img src="C:\Users\65\Desktop\UCD.jpg" alt="UCD" style="max-width: 100%;"><img src="C:\Users\65\Desktop\ERD.png" alt="UCD" style="max-width: 100%;"></li></ul><ul>
+<img src="/imgs/UCD.jpg" alt="UCD" style="max-width: 100%;"> <img src="/imgs/ERD.png" alt="ERD" style="max-width: 100%;"></li></ul><ul>
 <li style="display: list-item; line-height: 1.4em;"><h2 id="추후-발전-방향" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;margin-top: 0px;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230);"><a name="추후-발전-방향" href="#추후-발전-방향" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>추후 발전 방향</h2>
 <ul>
 <li style="display: list-item; line-height: 1.4em;">도서 정렬 방법의 다양화 - 카테고리 정렬 기능</li><li style="display: list-item; line-height: 1.4em;">관리자 권한 확장 - 유저 관리 부분</li><li style="display: list-item; line-height: 1.4em;">게시판 기능 확장 - 파일 첨부 기능</li></ul>
@@ -94,26 +94,10 @@
 </code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 1em; letter-spacing: -1px; font-weight: bold;">  - .gitignore를 통해 .gitignore파일만 Push되는 방식으로 해결
 </code></pre></li></ul><ul>
 <li style="display: list-item; line-height: 1.4em;"><h2 id="프로젝트를-통해-배운-점" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;margin-top: 0px;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230);"><a name="프로젝트를-통해-배운-점" href="#프로젝트를-통해-배운-점" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>프로젝트를 통해 배운 점</h2>
-<pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>  1. 기능과 디자인을 함께 생각해야 한다.
-
-  2. 크로스 체크가 반드시 필요하다.
-
-  3. 기능 구현에는 정해진 길이 없다.
-
-  4. 부트스트랩은 큰 틀만 줄 뿐 세부적인 것은 다시 디자인해야 한다.
-
-  5. GitHub를 사용하면 협업하기 편해진다.
-
-  6. 명확한 용어의 통일이 있어야 한다.
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 1em; letter-spacing: -1px; font-weight: bold;">  1. 기능과 디자인을 함께 생각해야 한다.
-
-  2. 크로스 체크가 반드시 필요하다.
-
-  3. 기능 구현에는 정해진 길이 없다.
-
-  4. 부트스트랩은 큰 틀만 줄 뿐 세부적인 것은 다시 디자인해야 한다.
-
-  5. GitHub를 사용하면 협업하기 편해진다.
-
-  6. 명확한 용어의 통일이 있어야 한다.
-</code></pre></li></ul></div>
+<p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">  <strong>1. 기능과 디자인을 함께 생각해야 한다.</strong></p>
+<p style="margin: 1em 0px; word-wrap: break-word;">  <strong>2. 크로스 체크가 반드시 필요하다.</strong></p>
+<p style="margin: 1em 0px; word-wrap: break-word;">  <strong>3. 기능 구현에는 정해진 길이 없다.</strong></p>
+<p style="margin: 1em 0px; word-wrap: break-word;">  <strong>4. 부트스트랩은 큰 틀만 줄 뿐 세부적인 것은 다시 디자인해야 한다.</strong></p>
+<p style="margin: 1em 0px; word-wrap: break-word;">  <strong>5. GitHub를 사용하면 협업하기 편해진다.</strong></p>
+<p style="margin: 1em 0px; word-wrap: break-word;">  <strong>6. 명확한 용어의 통일이 있어야 한다.</strong></p>
+</li></ul></div>
