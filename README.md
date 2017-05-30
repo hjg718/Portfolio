@@ -61,11 +61,9 @@
 </ul>
 <p style="margin: 1em 0px; word-wrap: break-word;"></p><ul>
 <li style="display: list-item; line-height: 1.4em;"><h2 id="목표" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;margin-top: 0px;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230);"><a name="목표" href="#목표" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>목표</h2>
-  <strong>* 도서 대여, 예약 및 관리 가능한 웹 도서관 관리 프로그램 구축</strong><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>  * 도서 검색, 대여, 예약 기능 구현
-  * 도서 등록, 관리 기능 구현
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 1em; letter-spacing: -1px; font-weight: bold;">  * 도서 검색, 대여, 예약 기능 구현
-  * 도서 등록, 관리 기능 구현
-</code></pre></li></ul><ul>
+  <strong> 도서 대여, 예약 및 관리 가능한 웹 도서관 관리 프로그램 구축</strong><ul>
+<li style="display: list-item; line-height: 1.4em;">도서 검색, 대여, 예약 기능 구현</li><li style="display: list-item; line-height: 1.4em;">도서 등록, 관리 기능 구현</li></ul>
+</li></ul><ul>
 <li style="display: list-item; line-height: 1.4em;"><h2 id="프로젝트-기간" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;margin-top: 0px;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230);"><a name="프로젝트-기간" href="#프로젝트-기간" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>프로젝트 기간</h2>
   <strong>* 총 기간 : (17.04.17 ~ 17.05.23)</strong><ul>
 <li style="display: list-item; line-height: 1.4em;">04.17 ~ 04.19 : 프로젝트 회의</li><li style="display: list-item; line-height: 1.4em;">04.24 ~ 04.28 : 모델링</li><li style="display: list-item; line-height: 1.4em;">05.01 ~ 05.15 : 기능 구현</li><li style="display: list-item; line-height: 1.4em;">05.16 ~ 05.19 : 디자인</li><li style="display: list-item; line-height: 1.4em;">05.22 ~ 05.23 : 세부 조정</li></ul>
