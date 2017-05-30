@@ -126,17 +126,17 @@ margin-top: 23%;
 </form>
 </div>
 </div>
-			<ul id="slippry-slider">
-			  <li>
-				<a ><img src="<c:url value='/resources/assets/img/slide/1.jpg'/>" alt="환영합니다."></a>
-			  </li>
-			  <li>
-				<a ><img src="<c:url value='/resources/assets/img/slide/2.jpg'/>"  alt="원하시는 도서를 검색하세요"></a>
-			  </li>
-			  <li>
-				<a ><img src="<c:url value='/resources/assets/img/slide/3.jpg'/>" alt="감사합니다. <span class='red'>♥</span>:)"></a>
-			  </li>
-			</ul>
+<ul id="slippry-slider">
+<li>
+<a ><img src="<c:url value='/resources/assets/img/slide/1.jpg'/>" alt="환영합니다."></a>
+</li>
+<li>
+<a ><img src="<c:url value='/resources/assets/img/slide/2.jpg'/>"  alt="원하시는 도서를 검색하세요"></a>
+</li>
+<li>
+<a ><img src="<c:url value='/resources/assets/img/slide/3.jpg'/>" alt="감사합니다. <span class='red'>♥</span>:)"></a>
+</li>
+</ul>
 </section>
 <section id="about">
 
