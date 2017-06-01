@@ -152,14 +152,12 @@ margin-top: 23%;
 		<div class="col-md-3">
 			<div class="team-box">
 			<div class="roles">
-				<h5><strong>유 선 필</strong></h5>
+				<h5><strong>홍 준 기</strong></h5>
 				<p>
-					CEO - Founder
+					총괄 코딩, 디자인, DB구축
 				</p>
 				<ul class="social-profile">
-					<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+					<li><a href="https://github.com/hjg718/Portfolio"><i class="fa fa-github fa-lg"></i></a></li>
 				</ul>
 			</div>
 			</div>
@@ -168,14 +166,12 @@ margin-top: 23%;
 			<div class="col-md-3">
 			<div class="team-box">
 			<div class="roles">
-				<h5><strong>남 기 현</strong></h5>
+				<h5><strong>유 선 필</strong></h5>
 				<p>
-					CEO - Founder
+					게시판 기능 코딩
 				</p>
 				<ul class="social-profile">
-					<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+					<li><a href="#"><i class="fa fa-github fa-lg"></i></a></li>
 				</ul>
 			</div>
 			</div>
@@ -184,14 +180,25 @@ margin-top: 23%;
 		<div class="col-md-3">
 			<div class="team-box">
 			<div class="roles">
-				<h5><strong>이 광 규</strong></h5>
+				<h5><strong>남 기 현</strong></h5>
 				<p>
-					Lead designer
+					DB 관리
 				</p>
 				<ul class="social-profile">
-					<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+					<li><a href="#"><i class="fa fa-github fa-lg"></i></a></li>
+				</ul>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="team-box">
+			<div class="roles">
+				<h5><strong>이 광 규</strong></h5>
+				<p>
+					게시판 기능 코딩
+				</p>
+				<ul class="social-profile">
+					<li><a href="#"><i class="fa fa-github fa-lg"></i></a></li>
 				</ul>
 			</div>
 			</div>
@@ -201,27 +208,10 @@ margin-top: 23%;
 			<div class="roles">
 				<h5><strong>이 정 협</strong></h5>
 				<p>
-					Customer support
+					게시판 기능 코딩
 				</p>
 				<ul class="social-profile">
-					<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
-				</ul>
-			</div>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="team-box">
-			<div class="roles">
-				<h5><strong>홍 준 기</strong></h5>
-				<p>
-					Coffee maker modal
-				</p>
-				<ul class="social-profile">
-					<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+					<li><a href="#"><i class="fa fa-github fa-lg"></i></a></li>
 				</ul>
 			</div>
 			</div>

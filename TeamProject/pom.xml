@@ -110,37 +110,8 @@
 			<version>5.2.4.Final</version>
 		</dependency>
 
-		<!-- 인잇바이드할때 -->
-		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
-
-		<!-- 메일보낼때 -->
-		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
-		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>1.5.4</version>
-		</dependency>
-
-		<!-- 메일보낼때 -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>4.1.6.RELEASE</version>
-		</dependency>
-
-		<!-- 웹 소켓 -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>4.1.9.RELEASE</version>
-		</dependency>
+	
+	
 
 		<!--웹소켓 2 http세션에서 접근해서 아이디 이용할때 -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -148,14 +119,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-		</dependency>
-
-		<!--웹소켓 2 http세션에서 접근해서 아이디 이용할때 -->
-		<!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api -->
-		<dependency>
-			<groupId>javax.websocket</groupId>
-			<artifactId>javax.websocket-api</artifactId>
-			<version>1.1</version>
 		</dependency>
 
 		<!-- 디비접속 -->
