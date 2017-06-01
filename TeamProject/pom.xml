@@ -110,9 +110,6 @@
 			<version>5.2.4.Final</version>
 		</dependency>
 
-	
-	
-
 		<!--웹소켓 2 http세션에서 접근해서 아이디 이용할때 -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
