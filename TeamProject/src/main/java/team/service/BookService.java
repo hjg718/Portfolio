@@ -11,12 +11,27 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Multipart;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +44,10 @@ public class BookService {
 
 	@Autowired
 	private SqlSessionTemplate sqlST;
+	
+	@Autowired
+    protected JavaMailSender  mailSender;
+
 	
 	public Book search(String keyword,String category){
 		BookDao dao = sqlST.getMapper(BookDao.class);
@@ -133,12 +152,43 @@ public class BookService {
 		return jobj.toJSONString();
 	}
 
-	public String returnBook(int num) {
+	public String returnBook(int num,int bnum,String id)  {
 		BookDao dao = sqlST.getMapper(BookDao.class);
 		JSONObject jobj = new JSONObject();
 		int row = dao.returnBook(num);
+		BookVo vo = dao.read(bnum);
 		if(row>0){
 			jobj.put("pass", true);
+			MimeMessage msg = mailSender.createMimeMessage();
+			try {
+				InternetAddress addr = new InternetAddress("hjg718@naver.com");
+				msg.setFrom(addr);
+				msg.setSubject(id+"¥‘¿Ã µµº≠∏¶ π›≥≥«œºÃΩ¿¥œ¥Ÿ.");
+				
+				Multipart multipart = new MimeMultipart();
+				BodyPart messageBodyPart = new MimeBodyPart();
+				String htmlText = "<div><img src=\"cid:my-image\" style=\"width: 150px; height: 150px; vertical-align: middle;\" >"
+						+"&thinsp;&thinsp;&thinsp;&thinsp; <span  style=\" font-size:15pt;\" >"+id+"¥‘¿Ã ["+vo.getBname()+"] ∏¶ π›≥≥ «œºÃΩ¿¥œ¥Ÿ. </span>"
+						+ "<a href=\"http://192.168.0.111:8081/TeamProject/user/info\" style=\" font-size: 15pt;\" >π›≥≥Ω¬¿Œ «œ∑Ø∞°±‚</a></div>";
+				messageBodyPart.setContent(htmlText, "text/html;charset=utf-8");
+				multipart.addBodyPart(messageBodyPart);
+				
+				messageBodyPart = new MimeBodyPart();
+				File file = new File("D:/upload/"+vo.getCoverName());
+				FileDataSource fds = new FileDataSource(file);
+				messageBodyPart.setDataHandler(new DataHandler(fds));
+				messageBodyPart .setHeader("Content-ID","<my-image>");
+				multipart.addBodyPart(messageBodyPart);
+				
+				msg.setContent(multipart, "text/plain;charset=utf-8");
+			
+				
+				msg.setRecipient(RecipientType.TO , new InternetAddress("hjg718@naver.com"));
+			    mailSender.send(msg);
+			} catch (Exception e) {
+				System.err.println("∏ﬁ¿œ Ω«∆–");
+				e.printStackTrace();
+			}
 		}
 		return jobj.toJSONString();
 	}

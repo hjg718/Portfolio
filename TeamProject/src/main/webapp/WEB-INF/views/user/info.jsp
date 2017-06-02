@@ -42,8 +42,9 @@ function secession() {
 		}
 	});
 }
-function returnBook(num) {
+function returnBook(num,booknum) {
 	$("#returnForm input[name=num]").val(num);
+	$("#returnForm input[name=booknum]").val(booknum);
 	var param = $("#returnForm").serialize();
 	$.ajax({
 		url : "<c:url value='/book/returnBook'/>",
@@ -264,7 +265,7 @@ text-overflow: ellipsis;
 <td>${ren.returndate }</td>
 <td>${ren.day }</td>
 <c:if test="${ren.status==1 }">
-<td><a href="javascript:returnBook(${ren.num });">반납하기</a></td>
+<td><a href="javascript:returnBook(${ren.num },${ren.booknum });">반납하기</a></td>
 </c:if>
 <c:if test="${ren.status==2 }">
 <td>반납 처리중</td>
@@ -399,6 +400,7 @@ text-overflow: ellipsis;
 <form  id="returnForm">
 <input type="hidden" name="${_csrf.parameterName }"	value="${_csrf.token }">
 <input type="hidden" name="num">
+<input type="hidden" name="booknum">
 </form>
 <!--반납  처리 -->
 <form  id="returnConfirmForm">

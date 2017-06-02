@@ -87,8 +87,8 @@ public class BookController {
 	
 	@RequestMapping("returnBook")
 	@ResponseBody
-	public String returnBook(@RequestParam("num")int num){
-		String pass= svc.returnBook(num);
+	public String returnBook(@RequestParam("num")int num,@RequestParam("booknum") int bnum,Authentication auth){
+		String pass= svc.returnBook(num, bnum,auth.getName());
 		return pass;
 	}
 	
